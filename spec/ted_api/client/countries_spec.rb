@@ -13,7 +13,7 @@ describe TedApi::Client::Countries do
     stub_get("countries.json?api-key=foo").
       to_return(:body => fixture("countries.json"))
     response = @client.countries
-    response.states.first.state.name.should == 'Afghanistan'
+    expect(response.states.first.state.name).to eq('Afghanistan')
   end 
   
   it "should return a specific Ted event in json" do
@@ -21,7 +21,7 @@ describe TedApi::Client::Countries do
     stub_get("countries/1.json?api-key=foo").
       to_return(:body => fixture("country.json"))
     response = @client.countries('1')
-    response.state.name.should == 'Afghanistan'
+    expect(response.state.name).to eq('Afghanistan')
   end 
   
   # XML Tests:
@@ -31,7 +31,7 @@ describe TedApi::Client::Countries do
     stub_get("countries.xml?api-key=foo").
       to_return(:body => fixture("countries.xml"))
     response = @client.countries
-    response.counts.total.should == "248"
+    expect(response.counts.total).to eq("248")
   end
   
   it "should return a specific Ted event in xml" do
@@ -39,7 +39,7 @@ describe TedApi::Client::Countries do
     stub_get("countries/1.xml?api-key=foo").
       to_return(:body => fixture("country.xml"))
     response = @client.countries('1')
-    response.state.name.should == 'Afghanistan'
+    expect(response.state.name).to eq('Afghanistan')
   end
   
   

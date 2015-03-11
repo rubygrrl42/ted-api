@@ -13,7 +13,7 @@ describe TedApi::Client::Languages do
     stub_get("languages.json?api-key=foo").
       to_return(:body => fixture("languages.json"))
     response = @client.languages
-    response.languages.first.language.language_code.should == 'af'
+    expect(response.languages.first.language.language_code).to eq('af')
   end 
   
   it "should return a specific Ted event in json" do
@@ -21,7 +21,7 @@ describe TedApi::Client::Languages do
     stub_get("languages/af.json?api-key=foo").
       to_return(:body => fixture("language.json"))
     response = @client.languages('af')
-    response.language.language_code.should == 'af'
+    expect(response.language.language_code).to eq('af')
   end 
   
   # XML Tests:
@@ -31,7 +31,7 @@ describe TedApi::Client::Languages do
     stub_get("languages.xml?api-key=foo").
       to_return(:body => fixture("languages.xml"))
     response = @client.languages
-    response.languages.first.first.should == 'language'
+    expect(response.languages.first.first).to eq('language')
   end
   
   it "should return a specific Ted event in xml" do
@@ -39,7 +39,7 @@ describe TedApi::Client::Languages do
     stub_get("languages/af.xml?api-key=foo").
       to_return(:body => fixture("language.xml"))
     response = @client.languages('af')
-    response.language.language_code.should == 'af'
+    expect(response.language.language_code).to eq('af')
   end
   
   

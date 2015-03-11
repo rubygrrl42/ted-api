@@ -13,7 +13,7 @@ describe TedApi::Client::Events do
     stub_get("events.json?api-key=foo").
       to_return(:body => fixture("events.json"))
     response = @client.events
-    response.counts.total.should == 211
+    expect(response.counts.total).to eq(211)
   end 
   
   it "should return a specific Ted event in json" do
@@ -21,7 +21,7 @@ describe TedApi::Client::Events do
     stub_get("events/1.json?api-key=foo").
       to_return(:body => fixture("event.json"))
     response = @client.events('1')
-    response.event.name.should == 'TED2008'
+    expect(response.event.name).to eq('TED2008')
   end 
   
   # XML Tests:
@@ -31,7 +31,7 @@ describe TedApi::Client::Events do
     stub_get("events.xml?api-key=foo").
       to_return(:body => fixture("events.xml"))
     response = @client.events
-    response.counts.total.should == "211"
+    expect(response.counts.total).to eq("211")
   end
   
   it "should return a specific Ted event in xml" do
@@ -39,7 +39,7 @@ describe TedApi::Client::Events do
     stub_get("events/1.xml?api-key=foo").
       to_return(:body => fixture("event.xml"))
     response = @client.events('1')
-    response.event.name.should == 'TED2008'
+    expect(response.event.name).to eq('TED2008')
   end
   
   

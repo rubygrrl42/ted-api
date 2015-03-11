@@ -26,9 +26,7 @@ describe Faraday::Response do
       end
 
       it "should raise #{exception.name} error" do
-        lambda do
-          @client.talks
-        end.should raise_error(exception)
+        expect{ @client.talks }.to raise_exception(exception)
       end
     end
   end

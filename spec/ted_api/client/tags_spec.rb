@@ -13,7 +13,7 @@ describe TedApi::Client::Tags do
     stub_get("tags.json?api-key=foo").
       to_return(:body => fixture("tags.json"))
     response = @client.tags
-    response.tags.first.tag.name.should == 'standard'
+    expect(response.tags.first.tag.name).to eq('standard')
   end 
   
   it "should return a specific tag in json" do
@@ -21,7 +21,7 @@ describe TedApi::Client::Tags do
     stub_get("tags/1.json?api-key=foo").
       to_return(:body => fixture("tag.json"))
     response = @client.tags('1')
-    response.tag.name.should == 'standard'
+    expect(response.tag.name).to eq('standard')
   end 
   
   # XML Tests:
@@ -31,7 +31,7 @@ describe TedApi::Client::Tags do
     stub_get("tags.xml?api-key=foo").
       to_return(:body => fixture("tags.xml"))
     response = @client.tags
-    response.tags.first.first.should == 'tag'
+    expect(response.tags.first.first).to eq('tag')
   end
   
   it "should return a specific theme in xml" do
@@ -39,7 +39,7 @@ describe TedApi::Client::Tags do
     stub_get("tags/1.xml?api-key=foo").
       to_return(:body => fixture("tag.xml"))
     response = @client.tags('1')
-    response.tag.name.should == 'standard'
+    expect(response.tag.name).to eq('standard')
   end
   
   

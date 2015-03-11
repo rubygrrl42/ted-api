@@ -13,7 +13,7 @@ describe TedApi::Client::Themes do
     stub_get("themes.json?api-key=foo").
       to_return(:body => fixture("themes.json"))
     response = @client.themes
-    response.themes.first.theme.slug.should == 'the_creative_spark'
+    expect(response.themes.first.theme.slug).to eq('the_creative_spark')
   end 
   
   it "should return a specific theme in json" do
@@ -21,7 +21,7 @@ describe TedApi::Client::Themes do
     stub_get("themes/1.json?api-key=foo").
       to_return(:body => fixture("theme.json"))
     response = @client.themes('1')
-    response.theme.slug.should == 'the_creative_spark'
+    expect(response.theme.slug).to eq('the_creative_spark')
   end 
   
   # XML Tests:
@@ -31,7 +31,7 @@ describe TedApi::Client::Themes do
     stub_get("themes.xml?api-key=foo").
       to_return(:body => fixture("themes.xml"))
     response = @client.themes
-    response.themes.first.first.should == 'theme'
+    expect(response.themes.first.first).to eq('theme')
   end
   
   it "should return a specific theme in xml" do
@@ -39,7 +39,7 @@ describe TedApi::Client::Themes do
     stub_get("themes/1.xml?api-key=foo").
       to_return(:body => fixture("theme.xml"))
     response = @client.themes('1')
-    response.theme.slug.should == 'the_creative_spark'
+    expect(response.theme.slug).to eq('the_creative_spark')
   end
   
   

@@ -13,7 +13,7 @@ describe TedApi::Client::Quotes do
     stub_get("quotes.json?api-key=foo").
       to_return(:body => fixture("quotes.json"))
     response = @client.quotes
-    response.quotes.first.quote.slug.should == 'around_the_world_women_and_children_spend_40_billion_hours'
+    expect(response.quotes.first.quote.slug).to eq('around_the_world_women_and_children_spend_40_billion_hours')
   end 
   
   it "should return a specific Ted quote in json" do
@@ -21,7 +21,7 @@ describe TedApi::Client::Quotes do
     stub_get("quotes/1.json?api-key=foo").
       to_return(:body => fixture("quote.json"))
     response = @client.quotes('1')
-    response.quote.slug.should == 'around_the_world_women_and_children_spend_40_billion_hours'
+    expect(response.quote.slug).to eq('around_the_world_women_and_children_spend_40_billion_hours')
   end 
   
   # XML Tests:
@@ -31,7 +31,7 @@ describe TedApi::Client::Quotes do
     stub_get("quotes.xml?api-key=foo").
       to_return(:body => fixture("quotes.xml"))
     response = @client.quotes
-    response.quotes.first.first.should == 'quote'
+    expect(response.quotes.first.first).to eq('quote')
   end
   
   it "should return a specific Ted event in xml" do
@@ -39,7 +39,7 @@ describe TedApi::Client::Quotes do
     stub_get("quotes/1.xml?api-key=foo").
       to_return(:body => fixture("quote.xml"))
     response = @client.quotes('1')
-    response.quote.slug.should == 'around_the_world_women_and_children_spend_40_billion_hours'
+    expect(response.quote.slug).to eq('around_the_world_women_and_children_spend_40_billion_hours')
   end
   
   
